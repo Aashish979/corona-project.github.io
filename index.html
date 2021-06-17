@@ -4,9 +4,7 @@
 	<title>Corona Project</title>
 	
 
-	<?php include 'links.php'; ?>
-	<?php include 'style.php'; ?>
-	<?php include 'connection.php'; ?>
+	
 	
 	
 </head>
@@ -419,48 +417,4 @@ $(document).ready(function(){
 	</html>
 
 
-	<?php
-
 	
-	if(isset($_POST['submit'])){
-		$uname = $_POST['uname'];
-		$email = $_POST['email'];
-		$mobile = $_POST['mobile'];
-		$symp = $_POST['coronasym'];
-		$msg = $_POST['msg'];
-
-		$chk= "";
-
-		foreach($symp as $chk1){
-			$chk .= $chk1."," ;
-		}
-
-		$insertquery= "INSERT INTO  corona ( name ,  email ,  mobile ,  symp ,  message ) values('$uname' ,'$email', '$mobile', '$symp', '$msg')";
-
-
-
-		$query =mysqli_query($con,$insertquery);
-
-		if($query){
-			?>
-			<script>
-				alert("inserted Successfully");
-			</script>
-			<?php
-		} else{
-			?>
-			<script>
-				alert("Not inserted");
-			</script>
-			<?php
-		}
-	}
-	
-
-
-
-
-	?>
-
-
-
