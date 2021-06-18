@@ -93,36 +93,35 @@
 
 		<!-------Corona Latest Updates------>
 
+		
 		<section class="corona_update">
 			<div class="mb-4">
-				<h3 class="text-uppercase text-center text-primary ">covid-19 Updates</h3>
+				<h3 class="text-uppercase text-center text-danger ">covid-19 World wide cases update</h3>
 			</div>
 
-			<div class="d-flex justify-content-around align-items-center count_style">
-				<div>
-					<h1 class="counter">1699787</h1>
-					<p>Confirmed</p>
-				</div>
-
-				<div>
-					<h1 class="counter">150000</h1>
-					<p>Recovered</p>
-				</div>
-
-				<div>
-					<h1 class="counter">14000</h1>
-					<p>Active</p>
-				</div>
-
-				<div>
-					<h1 class="counter">5000</h1>
-					<p>Death</p>
-				</div>
-
-
-			</div>
+	
+      <div class="table-responsive-sm table-responsive-xs">
+        <table id="countrywisetable" class="table table-bordered p-5">
+          <thead>
+            <th>
+              S.No.
+            </th>
+            <th>
+              Country
+            </th>
+            <th>
+              New Confirmed
+            </th>
+            <th>New Deaths</th>
+            <th>New Recovered</th>
+            <th>Total Confirmed</th>
+            <th>Total Deaths</th>
+            <th>Total Recovered</th>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
 		</section>
-
 
 		<!----------- About Section-->
 
@@ -439,6 +438,105 @@ $(document).ready(function(){
 				document.body.scrollTop = 0; // for safari
 				document.documentElement.scrollTop= 0;  // For chrome , fitrefox , IE and Opera
 			}
+			
+			// fetch API
+			
+			 $(document).ready(function () {
+        function fetchfromApi() {
+          $.ajax({
+            url: "https://api.covid19api.com/summary",
+            type: "GET",
+            dataType: "JSON",
+            success: function (data) {
+              if (data) {
+                console.log(data.Countries);
+                $("#globaltable tbody").html(`
+                         <tr>
+              <td >
+               ${data.Global.NewConfirmed}
+              </td>
+              <td >
+                ${data.Global.NewDeaths}
+              </td>
+              <td >
+                ${data.Global.NewRecovered}
+              </td>
+              <td >
+                ${data.Global.TotalConfirmed} 
+              </td>
+              <td >
+                ${data.Global.TotalDeaths} 
+              </td>
+              <td>
+                ${data.Global.TotalRecovered} 
+              </td>
+          </tr>`);
+                $("#Indiatable tbody").html(`
+                         <tr>
+              <td class="alert-warning">
+                ${data.Countries[76].NewConfirmed}
+              </td>
+              <td class="alert-danger">
+                ${data.Countries[76].NewDeaths}
+              </td>
+              <td class="alert-success">
+                ${data.Countries[76].NewRecovered} 
+              </td>
+              <td class="alert-warning">
+                ${data.Countries[76].TotalConfirmed} 
+              </td>
+              <td class="alert-danger">
+                ${data.Countries[76].TotalDeaths} 
+              </td>
+              <td class="alert-success">
+                ${data.Countries[76].TotalRecovered} 
+              </td>
+          </tr>`);
+                var sno = 1;
+                $("#countrywisetable tbody tr").remove();
+                $.each(data.Countries, function (key, value) {
+                 
+                  $("#countrywisetable tbody").append(`
+              <tr>
+                <td>
+               ${sno}
+              </td>
+              <td>
+                ${value.Country}
+              </td>
+              <td class="alert-warning">
+                ${value.NewConfirmed}
+              </td>
+              <td class="alert-danger">
+                ${value.NewDeaths}
+              </td>
+              <td class="alert-success">
+                ${value.NewRecovered}
+              </td>
+              <td class="alert-warning">
+                ${value.TotalConfirmed} 
+              </td>
+              <td class="alert-danger">
+                ${value.TotalDeaths} 
+              </td>
+              <td class="alert-success">
+                ${value.TotalRecovered} 
+              </td>
+          </tr>
+              `);
+                  sno++;
+                });
+              } else {
+              }
+            },
+          });
+        }
+        fetchfromApi();
+        setInterval(() => {
+          fetchfromApi();
+        }, 1000);
+        
+      });
 			
 		</script>
 	</body>
