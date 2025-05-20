@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 html {
@@ -10,7 +11,6 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
     padding-top: 76px;
     background-color: #f8f9fa;
 }
@@ -24,20 +24,14 @@ body {
     top: 0;
     width: 100%;
     z-index: 1000;
-    backdrop-filter: blur(10px);
 }
 
-.nav_style .navbar-brand {
+.navbar-brand {
     color: #ffffff !important;
     font-weight: 700;
     font-size: 1.5rem;
     display: flex;
     align-items: center;
-    transition: transform 0.3s ease;
-}
-
-.nav_style .navbar-brand:hover {
-    transform: scale(1.05);
 }
 
 .virus-icon {
@@ -46,11 +40,7 @@ body {
     color: #ff4757;
 }
 
-.nav_style .navbar-nav {
-    margin-left: 20px;
-}
-
-.nav_style .nav-link {
+.nav-link {
     color: #ffffff !important;
     font-weight: 500;
     padding: 10px 20px !important;
@@ -58,7 +48,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.nav_style .nav-link:hover {
+.nav-link:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
 }
@@ -86,7 +76,6 @@ body {
     color: #2c3e50;
     margin-bottom: 1.5rem;
     line-height: 1.4;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .covid-heading {
@@ -112,19 +101,11 @@ body {
     animation: pulse 2s ease-in-out infinite;
 }
 
-/* Corona Update Table */
+/* Table Styles */
 .corona_update {
     margin: 2rem auto;
     max-width: 1400px;
     padding: 0 15px;
-}
-
-.corona_update h1 {
-    font-size: 2.2rem;
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 2rem;
-    font-weight: 700;
 }
 
 .table-responsive {
@@ -134,10 +115,6 @@ body {
     background: #ffffff;
 }
 
-#countrywisetable {
-    margin-bottom: 0;
-}
-
 #countrywisetable thead th {
     background-color: #343a40;
     color: white;
@@ -145,64 +122,16 @@ body {
     font-weight: 600;
 }
 
-#countrywisetable td {
-    padding: 1rem;
-    vertical-align: middle;
-}
-
-/* Animations */
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-/* Contact Form */
-#contact {
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    padding: 4rem 0;
-}
-
-.form-control {
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    border: 2px solid #e9ecef;
-    transition: all 0.3s ease;
-}
-
-.form-control:focus {
-    border-color: #6c63ff;
-    box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #6c63ff 0%, #5651e5 100%);
-    border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
-}
-
 /* Footer */
 .footer_style {
     background: linear-gradient(135deg, #2c3e50 0%, #3d556e 100%) !important;
     padding: 3rem 0;
     color: #ffffff;
+    margin-bottom: 0;
+}
+
+.footer_style p {
+    margin-bottom: 0.5rem;
 }
 
 .footer_style .developer-info {
@@ -215,11 +144,16 @@ body {
     font-weight: 600;
 }
 
+.footer_style .social-links {
+    margin: 1rem 0;
+}
+
 .footer_style .social-links a {
     color: #ffffff;
     margin: 0 12px;
     font-size: 1.3rem;
     transition: all 0.3s ease;
+    display: inline-block;
 }
 
 .footer_style .social-links a:hover {
@@ -244,6 +178,7 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
     z-index: 999;
+    display: none;
 }
 
 #myBtn:hover {
@@ -251,14 +186,29 @@ body {
     box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
 }
 
+/* Animations */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
 /* Media Queries */
 @media (max-width: 991px) {
     .nav_style .navbar-collapse {
-        background: linear-gradient(135deg, #6c63ff 0%, #5651e5 100%);
+        background: #6c63ff;
         padding: 1rem;
         margin-top: 0.5rem;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(108, 99, 255, 0.2);
     }
     
     .main-heading {
@@ -291,5 +241,9 @@ body {
     .covid-icon {
         height: 40px;
         margin: 0 10px;
+    }
+    
+    .footer_style {
+        padding: 2rem 0;
     }
 }
